@@ -13,6 +13,16 @@
     "builders": [
       {
         "type": "vmware-iso",
+        "vcenter_server":      "{{user `vsphere_server` }}",
+        "username":            "{{user `vsphere_uid` }}",
+        "password":            "{{user `vsphere_passwd` }}",
+        "insecure_connection": "true",
+        "datacenter": "{{user `datacenter` }}",
+        "cluster": "{{user `cluster` }}",
+        "datastore": "{{user `datastore` }}",
+        "network": "{{user `network` }}",
+        "vm_name": "{{user `vsphere_vm_name` }}",
+        "guest_os_type": "centos7_64Guest",        
         "boot_command": ["e<down><down><end><bs><bs><bs><bs><bs>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<leftCtrlOn>x<leftCtrlOff>"],
         "boot_wait": "{{ user `boot_wait` }}",
         "disk_size": "{{ user `disk_size` }}",
